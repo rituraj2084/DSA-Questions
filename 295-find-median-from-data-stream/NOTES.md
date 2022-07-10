@@ -1,1 +1,2 @@
-​
+The idea is to use two heaps (one max heap, one mn heap) to save the input data. firstQ is a max_heap to save the first half of the data with smaller values, and secQ is a min_heap to save the second half of the data with bigger values. Everytime when inserting a new value, we first compare if it is smaller than the top of firstQ (the largest value of the first half), if so, insert into firstQ. Otherwise, it belongs to the second half. After inserting, we have to balance the first half and the second half to make sure either they have the same length or the length difference is only 1.
+The median will be the mean of two top elements (when they have the same length) or the top element of the queue with a larger length.
