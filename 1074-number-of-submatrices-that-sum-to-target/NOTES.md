@@ -1,1 +1,7 @@
+This problem is essentially a 2-dimensional version of #560. Subarray Sum Equals K (S.S.E.K). By using a prefix sum on each row or each column, we can compress this problem down to either N^2 iterations of the O(M) SSEK, or M^2 iterations of the O(N) SSEK.
 ​
+In the SSEK solution, we can find the number of subarrays with the target sum by utilizing a result map (res) to store the different values found as we iterate through the array while keeping a running sum (csum). Just as in the case with a prefix sum array, the sum of a subarray between i and j is equal to the sum of the subarray from 0 to j minus the sum of the subarray from 0 to i-1.
+​
+Rather than iteratively checking if sum[0,j] - sum[0,i-1] = T for every pair of i, j values, we can flip it around to sum[0,j] - T = sum[0,i-1] and since every earlier sum value has been stored in res, we can simply perform a lookup on sum[0,j] - T to see if there are any matches.
+​
+When extrapolating this solution to our 2-dimensional matrix (M), we will need to first prefix sum the rows or columns, (which we can do in-place to avoid extra space, as we will not need the original values again). Then we should iterate through M again in the opposite order of rows/columns where the prefix sums will allow us to treat a group of columns or rows as if it were a 1-dimensional array and apply the SSEK algorithm.
