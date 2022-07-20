@@ -20,7 +20,7 @@ public:
 				auto it = upper_bound (alpha[c - 'a'].begin (), alpha[c - 'a'].end (), x);
 				if (it == alpha[c - 'a'].end ()) {
                     found = false;
-                    break;
+                    //break;
                 }
 				else x = *it;
 			}
