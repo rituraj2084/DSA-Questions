@@ -10,7 +10,8 @@ public:
         if(n == 1) return cost[1];
         
         if(dp[n] != -1) return dp[n];
-        return dp[n] = cost[n] + min(solve2(cost, n-1, dp), solve2(cost, n-2, dp));
+        dp[n] = cost[n] + min(solve2(cost, n-1, dp), solve2(cost, n-2, dp));
+        return dp[n];
     }
     int minCostClimbingStairs(vector<int>& cost) {
         int n = cost.size();
