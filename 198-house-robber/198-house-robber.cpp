@@ -18,11 +18,26 @@ public:
         dp[ind] = max(exc, inc);
         return dp[ind];
     }
-    int rob(vector<int>& nums) {
-        //memoization
+    int solveTab(vector<int>&nums){
         int n = nums.size();
-        vector<int> dp(n+1, -1);
-        return solveMem(nums, n-1, dp);
+        vector<int> dp(n+1, 0);
+        if(n == 1) return nums[0];
+        dp[0] = nums[0];
+        dp[1] = max(nums[0], nums[1]);
+        for(int i = 2; i < n; i++){
+            dp[i] = max(dp[i-1], dp[i-2]+nums[i]);
+        }
+        return dp[n-1];
+    }
+    
+    int rob(vector<int>& nums) {
+        //tabulation
+        return solveTab(nums);
+        
+        //memoization
+        // int n = nums.size();
+        // vector<int> dp(n+1, -1);
+        // return solveMem(nums, n-1, dp);
         
         //Recursive
         // int n = nums.size();
