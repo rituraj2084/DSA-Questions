@@ -29,10 +29,22 @@ public:
         }
         return dp[n-1];
     }
-    
+    int solve(vector<int>&nums){
+        int prev2 = 0;
+        int prev1 = nums[0];
+        int ans;
+        for(int i = 1; i < nums.size(); i++){
+          ans = max(prev1, prev2 + nums[i]);
+            prev2 = prev1;
+            prev1 = ans;
+        }
+        return prev1;
+    }
     int rob(vector<int>& nums) {
+        //Space optimised
+        return solve(nums);
         //tabulation
-        return solveTab(nums);
+        // return solveTab(nums);
         
         //memoization
         // int n = nums.size();
