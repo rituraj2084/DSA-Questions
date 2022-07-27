@@ -9,6 +9,7 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
+        /*
         if(head == NULL || head -> next == NULL){
             return NULL;
         }
@@ -25,8 +26,8 @@ public:
             }       
         }
         return NULL;
-        
-        /*
+        */
+    
       unordered_set<ListNode*>st;
         while(head != NULL){
             if(st.find(head) != st.end()){
@@ -36,6 +37,6 @@ public:
             head = head -> next;
         }
         return NULL;
-        */
+        
     }
 };
