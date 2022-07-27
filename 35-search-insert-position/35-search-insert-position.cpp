@@ -17,18 +17,22 @@ public:
         return -1;
     }
     int searchInsert(vector<int>& nums, int target) {
-        int ans = search(nums, target);
-        if(ans == -1){
-            for(int i = 0; i < nums.size(); i++){
-                if(target < nums[i]){
-                    ans = i;
-                    break;
-                }
-            }
-        }
-        if(ans == -1){
-            ans = nums.size();
-        }
-        return ans;
+        // Built-in function
+        return lower_bound(nums.begin(), nums.end(), target) - nums.begin();
+        
+        // brute force
+        // int ans = search(nums, target);
+        // if(ans == -1){
+        //     for(int i = 0; i < nums.size(); i++){
+        //         if(target < nums[i]){
+        //             ans = i;
+        //             break;
+        //         }
+        //     }
+        // }
+        // if(ans == -1){
+        //     ans = nums.size();
+        // }
+        // return ans;
     }
 };
