@@ -12,10 +12,23 @@ public:
         return dp[n];
     }
     
+    int solveTab(int n){
+        vector<int> dp(n+2, 0);
+        dp[0] = 0;
+        dp[1] = 1;
+        //int prev1 = 1, prev2 = 0;
+        for(int i = 2; i <= n; i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n];
+    }
     int fib(int n) {
-        //Memoization
-        vector<int>dp(n+1, -1);
-        return solveMem(n, dp);
+        //tabulation
+        return solveTab(n);
+        
+        // //Memoization
+        // vector<int>dp(n+1, -1);
+        // return solveMem(n, dp);
         
         // recursive
        //return solve(n);
