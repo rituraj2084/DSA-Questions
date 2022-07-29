@@ -28,8 +28,29 @@ public:
         }
     }
     vector<int> preorder(Node* root) {
-       vector<int> ans;
-        solve(root, ans);
+        //iterative
+        vector<int> ans;
+        if (root == NULL) {
+            return ans;
+        }
+        
+        stack<Node*> st;
+        st.push(root);
+        while (!st.empty()) {
+            Node* cur = st.top();
+            st.pop();
+            ans.push_back(cur -> val);
+            for (int i = cur -> children.size() - 1; i >= 0; i--) {
+                if (cur -> children[i] != NULL) {
+                    st.push(cur -> children[i]);
+                }
+            }
+        }
         return ans;
+        
+       //  // recursive
+       // vector<int> ans;
+       //  solve(root, ans);
+       //  return ans;
     }
 };
