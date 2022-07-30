@@ -25,6 +25,10 @@ public:
                 }
             }
         }
+        for(int i = 0; i < s.length(); i++){
+            cout<<lps[i]<<" ";
+        }
+        
         return lps;
     }
     int strStr(string haystack, string needle)
