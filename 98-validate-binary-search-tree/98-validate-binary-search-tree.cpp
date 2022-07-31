@@ -18,6 +18,7 @@ public:
             isValidate(root -> right, root -> val, maxVal);
     }
     bool isValidBST(TreeNode* root) {
+       
         return isValidate(root, LONG_MIN, LONG_MAX);
     }
 };
