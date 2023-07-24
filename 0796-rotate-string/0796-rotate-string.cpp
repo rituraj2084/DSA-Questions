@@ -11,13 +11,24 @@ public:
     }
     bool rotateString(string s, string goal) {
         if(s.length() != goal.length()) return false;
+        if(s == goal) return true;
         int n = s.length();
-        for(int i = 0; i < n; i++){
-            string newStr = rotate(s);
-            // cout<<newStr<<" ";
-            if(newStr == goal) return true;
+        while(n--){
+            if(s == goal) return true;
+            s = s.substr(1) + s[0];
         }
-        
         return false;
+        
+        
+        
+//         if(s.length() != goal.length()) return false;
+//         int n = s.length();
+//         for(int i = 0; i < n; i++){
+//             string newStr = rotate(s);
+//             // cout<<newStr<<" ";
+//             if(newStr == goal) return true;
+//         }
+        
+//         return false;
     }
 };
