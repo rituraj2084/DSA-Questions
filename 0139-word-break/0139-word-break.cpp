@@ -41,9 +41,25 @@ public:
     }
     
     bool wordBreak(string s, vector<string>& wordDict) {
-        unordered_map<int, bool> memo; // Memoization
         
-        return wordBreakMemo(s, wordDict, 0, memo);
+        int n = s.length();
+        vector<bool> dp(n + 1, false);
+        dp[0] = true;
+        
+        for (int i = 1; i <= n; ++i) {
+            for (const string& word : wordDict) {
+                int len = word.length();
+                if (len <= i && dp[i - len] && s.substr(i - len, len) == word) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        
+        return dp[n];
+        
+        // unordered_map<int, bool> memo; // Memoization       
+        // return wordBreakMemo(s, wordDict, 0, memo);
         
        // return wordBreakRecursive(s, wordDict, 0);
     }
